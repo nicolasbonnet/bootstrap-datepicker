@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First try</title>
+
+    <link href="../dist/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap-datepicker.standalone.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap-datepicker3.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap-datepicker3.standalone.css" rel="stylesheet">
+
+    <!--
+    <link href="../less/datepicker.less">
+    <link href="../less/datepicker3.less">
+    -->
+</head>
+<body>
+    <div id="datepicker" data-date="02/12/2016"></div>
+    <input type="hidden" id="my_hidden_input">
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
+        $('#datepicker').datepicker({
+            multidate: true,
+            daysOfWeekHighlighted :
+        });
+
+        $('#datepicker').on("changeDate", function () {
+            $('#my_hidden_input').val(
+                    $('#datepicker').datepicker('getFormattedDate')
+            );
+        });
+    </script>
+</body>
+</html>
