@@ -20,10 +20,37 @@
 
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/locales/bootstrap-datepicker.fr.js" charset="UTF-8"></script>
     <script type="text/javascript">
+
+
+        var dates = ["10/02/2016","20/02/2016"];
+
+        $.each(dates, function( index, value ) {
+            alert(value);
+            var values_day = value.split('/');
+            alert(values_day[0]);
+        });
+
         $('#datepicker').datepicker({
+            startDate: "01/02/2016",
+            endDate: "29/02/2016",
+            language: 'fr',
             multidate: true,
-            daysOfWeekHighlighted :
+            beforeShowDay: function (date){
+                if (date.getMonth() == (new Date()).getMonth())
+                    switch (date.getDate()){
+                        case 4:
+                            return {
+                                tooltip: 'Example tooltip',
+                                classes: 'active'
+                            };
+                        case 8:
+                            return false;
+                        case 12:
+                            return "green";
+                    }
+            }
         });
 
         $('#datepicker').on("changeDate", function () {
